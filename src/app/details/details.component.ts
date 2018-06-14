@@ -1,15 +1,15 @@
-import { SuperheroService } from './../superhero.service';
-import { Component, OnInit } from '@angular/core';
-import { SuperHero } from '../../models/superhero';
-import { ActivatedRoute, Router } from '@angular/router';
+import { SuperheroService } from "./../superhero.service";
+import { Component, OnInit } from "@angular/core";
+import { SuperHero } from "../../models/superhero";
+import { ActivatedRoute, Router, Params } from "@angular/router";
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  selector: "app-details",
+  templateUrl: "./details.component.html",
+  styleUrls: ["./details.component.css"]
 })
 export class DetailsComponent implements OnInit {
-  selected: SuperHero = new SuperHero('', '', '', '');
+  selected: SuperHero = new SuperHero("", "", "", "");
 
   constructor(
     private superheroService: SuperheroService,
@@ -21,7 +21,9 @@ export class DetailsComponent implements OnInit {
       this.selected = hero;
     });
 
-    this.selected = this.superheroService.getHero(this.route.paramMap['hero']);
+    this.route.paramMap.subscribe((params: Params) => {
+      this.selected = params.get("hero");
+    });
   }
 
   onDeploy(index) {
