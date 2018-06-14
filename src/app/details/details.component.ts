@@ -9,7 +9,7 @@ import { ActivatedRoute, Router, Params } from "@angular/router";
   styleUrls: ["./details.component.css"]
 })
 export class DetailsComponent implements OnInit {
-  selected: SuperHero = new SuperHero("", "", "", "");
+  selected: SuperHero;
 
   constructor(
     private superheroService: SuperheroService,
