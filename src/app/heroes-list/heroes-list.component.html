@@ -1,0 +1,7 @@
+<ul>
+  <li (click)="onClick(i)" *ngFor='let hero of Heroes; let i = index'>
+    <a [routerLink]="['/superheros', i]">
+      <h3>{{hero.Name}}</h3>
+    </a>
+  </li>
+</ul>
